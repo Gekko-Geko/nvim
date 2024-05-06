@@ -10,11 +10,20 @@ return {
 
     config = function()
         local builtin = require('telescope.builtin')
+        local function docker_build()
+            local user_input = vim.fn.input("Image tag: ")
+            vim.cmd("!docker build --tag " .. user_input .. " .")
+        end
+
+        local function docker_compose_up()
+            vim.cmd("!docker compose down -v; docker compose build; docker compose up -d --force-recreate")
+        end
+
         require('which-key').register({
             d = {
                 name = "Docker",
-                i = { "<cmd>!docker build --tag vim.fn/input() .<CR>", "Build docker image" },
-                c = { "<cmd>!docker compose down -v; docker compose build; docker compose up -d --force-recreate <CR>", "Docker compose down/build/up" }
+                i = { docker_build, "Build docker image" },
+                c = { docker_compose_up, "Docker compose down/build/up" }
 
             },
             e = { "<cmd>Neotree toggle<CR>", "Toggle Neotree" },
