@@ -23,14 +23,19 @@ return {
             cmp_lsp.default_capabilities())
 
         require("fidget").setup({})
-        require("mason").setup()
+        require("mason").setup({})
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "lua_ls",
-                "dockerls",
+                "cssls",
                 "docker_compose_language_service",
-                "pyright",
+                "dockerls",
+                "html",
+                "intelephense",
                 "jsonls",
+                "lua_ls",
+                "marksman",
+                "pyright",
+                "yamlls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
