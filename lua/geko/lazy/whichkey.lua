@@ -33,7 +33,7 @@ return {
             p = {
                 name = "Telescope",
                 f = { builtin.find_files, "Find files" },
-                p = { builtin.git_files, "Git files" },
+                p = { builtin.buffers, "Open buffers" },
                 s = { function()
                     builtin.grep_string({ search = vim.fn.input("Grep > ") })
                 end, "Search string" },
